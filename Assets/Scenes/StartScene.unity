@@ -386,6 +386,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &701997786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701997787}
+  m_Layer: 6
+  m_Name: GroundPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &701997787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701997786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1255103323}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &853250488
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 853250490}
   - component: {fileID: 853250489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LevelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +676,8 @@ GameObject:
   - component: {fileID: 1255103322}
   - component: {fileID: 1255103325}
   - component: {fileID: 1255103324}
-  m_Layer: 0
+  - component: {fileID: 1255103326}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,9 +743,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255103321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5418706, y: -2.9513636, z: 0}
+  m_LocalPosition: {x: -6.49, y: -2.992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 701997787}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -727,7 +759,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1255103321}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4f78fcb1b66c44a05b5741b51bd182f1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -749,12 +781,30 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &1255103326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255103321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9ed9ba9e0044a159f169ec7da1faa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedX: 5
+  jumpForce: 10
+  groundPoint: {fileID: 701997787}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1575986987
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +902,7 @@ GameObject:
   - component: {fileID: 1861275305}
   - component: {fileID: 1861275304}
   - component: {fileID: 1861275303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921879831}
   - component: {fileID: 1921879832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ceiling Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
