@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private LayerMask groundMask;
 
     private Rigidbody2D _rb;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
+
     private float _horizontalInput;
     private bool _isJump;
     private bool _canDoubleJump;
@@ -16,6 +20,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update() {
@@ -32,6 +38,19 @@ public class PlayerController : MonoBehaviour {
                 _isJump = true;
             }
         }
+
+        SetupAnimations();
+        Flip();
+    }
+
+    private void Flip() {
+        if (_horizontalInput < 0 && !_spriteRenderer.flipX) _spriteRenderer.flipX = true;
+        else if (_horizontalInput > 0 && _spriteRenderer.flipX) _spriteRenderer.flipX = false;
+    }
+
+    private void SetupAnimations() {
+        _animator.SetBool("onGround", _onGround);
+        _animator.SetFloat("moveSpeed", Math.Abs(_rb.velocity.x));
     }
 
     private void FixedUpdate() {
