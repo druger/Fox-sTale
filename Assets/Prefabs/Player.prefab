@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: 1761103877829689384}
   - component: {fileID: 1761103877829689386}
   - component: {fileID: 1761103877829689387}
+  - component: {fileID: 1025074117947868606}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedX: 5
   jumpForce: 10
+  _knockBackLength: 0.25
+  _knockBackForce: 5
   groundPoint: {fileID: 1761103876200790447}
   groundMask:
     serializedVersion: 2
@@ -191,3 +194,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1025074117947868606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761103877829689389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e48416aca984401290bfa87d70d245f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiController: {fileID: 0}

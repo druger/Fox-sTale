@@ -17,18 +17,20 @@ public class CameraController : MonoBehaviour {
     }
 
     void Update() {
-        transform.position = new Vector3(
-            target.position.x,
-            Mathf.Clamp(target.position.y, minHeight, maxHeight),
-            transform.position.z);
+        if (target != null) {
+            transform.position = new Vector3(
+                target.position.x,
+                Mathf.Clamp(target.position.y, minHeight, maxHeight),
+                transform.position.z);
 
-        Vector2 amountToMove = new Vector2(
-            transform.position.x - _lastPos.x,
-            transform.position.y - _lastPos.y);
+            Vector2 amountToMove = new Vector2(
+                transform.position.x - _lastPos.x,
+                transform.position.y - _lastPos.y);
 
-        farBg.position = farBg.position + new Vector3(amountToMove.x, amountToMove.y);
-        middleBg.position += new Vector3(amountToMove.x, amountToMove.y) * .5f;
+            farBg.position = farBg.position + new Vector3(amountToMove.x, amountToMove.y);
+            middleBg.position += new Vector3(amountToMove.x, amountToMove.y) * .5f;
 
-        _lastPos = transform.position;
+            _lastPos = transform.position;
+        }
     }
 }

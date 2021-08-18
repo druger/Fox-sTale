@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private float speedX = 5.0f;
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float _knockBackLength = .25f;
+    [SerializeField] private float _knockBackForce = 5f;
     [SerializeField] private Transform groundPoint;
     [SerializeField] private LayerMask groundMask;
 
@@ -14,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer _spriteRenderer;
 
     private float _horizontalInput;
+    private float _knockBackCounter;
     private bool _isJump;
     private bool _canDoubleJump;
     private bool _onGround;
@@ -25,22 +28,33 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        _horizontalInput = Input.GetAxis("Horizontal");
+        if (_knockBackCounter <= 0) {
+            _horizontalInput = Input.GetAxis("Horizontal");
 
-        _onGround = Physics2D.OverlapCircle(groundPoint.position, .2f, groundMask);
-        
-        if (Input.GetButtonDown("Jump")) {
-            if (_onGround) {
-                _isJump = true;
-                _canDoubleJump = true;
-            } else if (_canDoubleJump) {
-                _canDoubleJump = false;
-                _isJump = true;
+            _onGround = Physics2D.OverlapCircle(groundPoint.position, .2f, groundMask);
+
+            if (Input.GetButtonDown("Jump")) {
+                if (_onGround) {
+                    _isJump = true;
+                    _canDoubleJump = true;
+                } else if (_canDoubleJump) {
+                    _canDoubleJump = false;
+                    _isJump = true;
+                }
             }
+
+            Flip();
+        } else {
+            _knockBackCounter -= Time.deltaTime;
         }
 
         SetupAnimations();
-        Flip();
+    }
+
+    public void KnockBack() {
+        _knockBackCounter = _knockBackLength;
+        _rb.velocity = new Vector2(0f, _knockBackForce);
+        _animator.SetTrigger("hurt");
     }
 
     private void Flip() {
@@ -54,10 +68,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        _rb.velocity = new Vector2(speedX * SpeedXMultiplier * _horizontalInput * Time.fixedDeltaTime, _rb.velocity.y);
-        if (_isJump) {
-            _isJump = false;
-            Jump();
+        if (_knockBackCounter <= 0) {
+            _rb.velocity = new Vector2(speedX * SpeedXMultiplier * _horizontalInput * Time.fixedDeltaTime,
+                _rb.velocity.y);
+            if (_isJump) {
+                _isJump = false;
+                Jump();
+            }
+        } else {
+            if (_spriteRenderer.flipX) _rb.velocity = new Vector2(_knockBackForce, _rb.velocity.y);
+            else _rb.velocity = new Vector2(-_knockBackForce, _rb.velocity.y);
         }
     }
 
