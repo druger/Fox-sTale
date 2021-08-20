@@ -4,21 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour {
-    private const int MAXHealth = 6;
+    [SerializeField] private LevelManager _levelManager;
+    [SerializeField] private UIController uiController;
+
+    public int MAXHealth = 6;
 
     private SpriteRenderer _spriteRenderer;
     private PlayerController _playerController;
 
-    private int currentHealth;
+    private int _currentHealth;
     private float _invinsibleCounter;
     private float _invinsibleLength = 1;
-
-    [SerializeField] private UIController uiController;
+    
+    public int CurrentHealth {
+        get => _currentHealth;
+        set => _currentHealth = value;
+    }
 
     void Start() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerController = GetComponent<PlayerController>();
-        currentHealth = MAXHealth;
+        _currentHealth = MAXHealth;
     }
 
     private void Update() {
@@ -30,16 +36,17 @@ public class PlayerHealthController : MonoBehaviour {
 
     public void DealDamage() {
         if (_invinsibleCounter <= 0) {
-            currentHealth--;
-            if (currentHealth <= 0) {
-                Destroy(gameObject);
+            _currentHealth--;
+            if (_currentHealth <= 0) {
+                _currentHealth = 0;
+                _levelManager.RespawnPlayer();
             } else {
                 _invinsibleCounter = _invinsibleLength;
                 ChangePlayerTransparency(.5f);
                 _playerController.KnockBack();
             }
 
-            uiController.UpdateHealth(currentHealth);
+            uiController.UpdateHealth();
         }
     }
 
