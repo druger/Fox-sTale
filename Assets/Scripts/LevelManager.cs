@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,18 @@ public class LevelManager : MonoBehaviour {
 
     private PlayerHealthController _playerHealthController;
 
-    void Start() {
+    private int _gemsCollected;
+
+    public int GemsCollected {
+        get => _gemsCollected;
+        set => _gemsCollected = value;
+    }
+
+    public PlayerHealthController PlayerHealthController => _playerHealthController;
+
+    public UIController UIController => uiController;
+
+    private void Awake() {
         _playerHealthController = player.GetComponent<PlayerHealthController>();
     }
 
@@ -24,7 +36,7 @@ public class LevelManager : MonoBehaviour {
         yield return new WaitForSeconds(waitToRespawn);
         player.SetActive(true);
         player.transform.position = _checkpointController.SpawnPosition;
-        _playerHealthController.CurrentHealth = _playerHealthController.MAXHealth;
-        uiController.UpdateHealth();
+        _playerHealthController.CurrentHealth = _playerHealthController.maxHealth;
+        uiController.RespawnHealth();
     }
 }

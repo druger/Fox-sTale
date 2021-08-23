@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour {
-    [SerializeField] private LevelManager _levelManager;
+    [SerializeField] private LevelManager levelManager;
     [SerializeField] private UIController uiController;
+    [SerializeField] private GameObject deathEffect;
 
-    public int MAXHealth = 6;
+    public int maxHealth = 6;
 
     private SpriteRenderer _spriteRenderer;
     private PlayerController _playerController;
@@ -15,7 +16,7 @@ public class PlayerHealthController : MonoBehaviour {
     private int _currentHealth;
     private float _invinsibleCounter;
     private float _invinsibleLength = 1;
-    
+
     public int CurrentHealth {
         get => _currentHealth;
         set => _currentHealth = value;
@@ -24,7 +25,7 @@ public class PlayerHealthController : MonoBehaviour {
     void Start() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerController = GetComponent<PlayerController>();
-        _currentHealth = MAXHealth;
+        _currentHealth = maxHealth;
     }
 
     private void Update() {
@@ -39,15 +40,22 @@ public class PlayerHealthController : MonoBehaviour {
             _currentHealth--;
             if (_currentHealth <= 0) {
                 _currentHealth = 0;
-                _levelManager.RespawnPlayer();
+                Instantiate(deathEffect, transform.position, transform.rotation);
+                levelManager.RespawnPlayer();
             } else {
                 _invinsibleCounter = _invinsibleLength;
                 ChangePlayerTransparency(.5f);
                 _playerController.KnockBack();
             }
 
-            uiController.UpdateHealth();
+            uiController.ReduceHealth();
         }
+    }
+
+    public void HealPlayer() {
+        _currentHealth++;
+        if (_currentHealth > maxHealth) _currentHealth = maxHealth;
+        uiController.IncreaseHealth();
     }
 
     private void ChangePlayerTransparency(float alfa) {
