@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private float speedX = 5.0f;
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float bounceForce = 15f;
     [SerializeField] private float _knockBackLength = .25f;
     [SerializeField] private float _knockBackForce = 5f;
     [SerializeField] private Transform groundPoint;
@@ -55,6 +56,10 @@ public class PlayerController : MonoBehaviour {
         _knockBackCounter = _knockBackLength;
         _rb.velocity = new Vector2(0f, _knockBackForce);
         _animator.SetTrigger("hurt");
+    }
+
+    public void Bounce() {
+        _rb.velocity = new Vector2(_rb.velocity.x, bounceForce);
     }
 
     private void Flip() {
