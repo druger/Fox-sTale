@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour {
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private UIController uiController;
     [SerializeField] private GameObject pickupEffect;
@@ -24,6 +25,7 @@ public class Pickup : MonoBehaviour {
                 _isCollected = true;
                 Destroy(gameObject);
                 CreatePickupEffect();
+                audioManager.PlaySFX(6);
             }
 
             if (isHeal) {
@@ -32,6 +34,7 @@ public class Pickup : MonoBehaviour {
                     _isCollected = true;
                     Destroy(gameObject);
                     CreatePickupEffect();
+                    audioManager.PlaySFX(7);
                 }
             }
         }

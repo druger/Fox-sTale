@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour {
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private UIController uiController;
     [SerializeField] private GameObject deathEffect;
@@ -46,9 +44,11 @@ public class PlayerHealthController : MonoBehaviour {
                 _invinsibleCounter = _invinsibleLength;
                 ChangePlayerTransparency(.5f);
                 _playerController.KnockBack();
+                audioManager.PlaySFX(9);
             }
 
             uiController.ReduceHealth();
+            audioManager.PlaySFX(9);
         }
     }
 

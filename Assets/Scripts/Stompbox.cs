@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Stompbox : MonoBehaviour {
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameObject deathEffect;
 
     private PlayerController _playerController;
@@ -18,6 +19,7 @@ public class Stompbox : MonoBehaviour {
             transformOther.parent.gameObject.SetActive(false);
             Instantiate(deathEffect, transformOther.position, transformOther.rotation);
             _playerController.Bounce();
+            audioManager.PlaySFX(3);
         }
     }
 }

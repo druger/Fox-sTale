@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private const float SpeedXMultiplier = 50f;
 
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private float speedX = 5.0f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float bounceForce = 15f;
@@ -88,5 +89,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Jump() {
         _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        audioManager.PlaySFX(10);
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private UIController uiController;
     [SerializeField] private GameObject player;
     [SerializeField] private CheckpointController _checkpointController;
@@ -33,6 +34,7 @@ public class LevelManager : MonoBehaviour {
     private IEnumerator Respawn() {
         // TODO reinstance player object instead
         player.SetActive(false);
+        audioManager.PlaySFX(8);
         yield return new WaitForSeconds(waitToRespawn);
         player.SetActive(true);
         player.transform.position = _checkpointController.SpawnPosition;

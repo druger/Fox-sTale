@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf444620ad5ea4fb1895abab8373a0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   deathEffect: {fileID: 6297761834866606306, guid: 2b39186cd45a9446dadbd8df8227a8d3, type: 3}
 --- !u!1 &1761103876200790446
 GameObject:
@@ -239,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9ed9ba9e0044a159f169ec7da1faa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   speedX: 5
   jumpForce: 10
   bounceForce: 15
@@ -279,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e48416aca984401290bfa87d70d245f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   levelManager: {fileID: 0}
   uiController: {fileID: 0}
   deathEffect: {fileID: 6297761834866606306, guid: 2b39186cd45a9446dadbd8df8227a8d3, type: 3}

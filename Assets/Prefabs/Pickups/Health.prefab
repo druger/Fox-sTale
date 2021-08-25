@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d022856ffdd4cdaacb67b6b31e96d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   levelManager: {fileID: 0}
   uiController: {fileID: 0}
   pickupEffect: {fileID: 4507532660321630120, guid: bbf1910f1c4e3442b86676ad89ed4300, type: 3}
