@@ -35,7 +35,12 @@ public class LevelManager : MonoBehaviour {
         // TODO reinstance player object instead
         player.SetActive(false);
         audioManager.PlaySFX(8);
-        yield return new WaitForSeconds(waitToRespawn);
+        
+        yield return new WaitForSeconds(waitToRespawn - 1f / uiController.FadeSpeed);
+        uiController.FadeToBlack();
+        yield return new WaitForSeconds(1f / uiController.FadeSpeed + .2f);
+        uiController.FadeFromBlack();
+
         player.SetActive(true);
         player.transform.position = _checkpointController.SpawnPosition;
         _playerHealthController.CurrentHealth = _playerHealthController.maxHealth;

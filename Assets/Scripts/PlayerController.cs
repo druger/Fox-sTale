@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
     private const float SpeedXMultiplier = 50f;
 
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private float speedX = 5.0f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float bounceForce = 15f;
@@ -30,24 +31,26 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if (_knockBackCounter <= 0) {
-            _horizontalInput = Input.GetAxis("Horizontal");
+        if (!pauseMenu.IsPaused) {
+            if (_knockBackCounter <= 0) {
+                _horizontalInput = Input.GetAxis("Horizontal");
 
-            _onGround = Physics2D.OverlapCircle(groundPoint.position, .2f, groundMask);
+                _onGround = Physics2D.OverlapCircle(groundPoint.position, .2f, groundMask);
 
-            if (Input.GetButtonDown("Jump")) {
-                if (_onGround) {
-                    _isJump = true;
-                    _canDoubleJump = true;
-                } else if (_canDoubleJump) {
-                    _canDoubleJump = false;
-                    _isJump = true;
+                if (Input.GetButtonDown("Jump")) {
+                    if (_onGround) {
+                        _isJump = true;
+                        _canDoubleJump = true;
+                    } else if (_canDoubleJump) {
+                        _canDoubleJump = false;
+                        _isJump = true;
+                    }
                 }
-            }
 
-            Flip();
-        } else {
-            _knockBackCounter -= Time.deltaTime;
+                Flip();
+            } else {
+                _knockBackCounter -= Time.deltaTime;
+            }
         }
 
         SetupAnimations();
@@ -74,16 +77,18 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (_knockBackCounter <= 0) {
-            _rb.velocity = new Vector2(speedX * SpeedXMultiplier * _horizontalInput * Time.fixedDeltaTime,
-                _rb.velocity.y);
-            if (_isJump) {
-                _isJump = false;
-                Jump();
+        if (!pauseMenu.IsPaused) {
+            if (_knockBackCounter <= 0) {
+                _rb.velocity = new Vector2(speedX * SpeedXMultiplier * _horizontalInput * Time.fixedDeltaTime,
+                    _rb.velocity.y);
+                if (_isJump) {
+                    _isJump = false;
+                    Jump();
+                }
+            } else {
+                if (_spriteRenderer.flipX) _rb.velocity = new Vector2(_knockBackForce, _rb.velocity.y);
+                else _rb.velocity = new Vector2(-_knockBackForce, _rb.velocity.y);
             }
-        } else {
-            if (_spriteRenderer.flipX) _rb.velocity = new Vector2(_knockBackForce, _rb.velocity.y);
-            else _rb.velocity = new Vector2(-_knockBackForce, _rb.velocity.y);
         }
     }
 
