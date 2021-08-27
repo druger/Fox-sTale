@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float speedX = 5.0f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float bounceForce = 15f;
-    [SerializeField] private float _knockBackLength = .25f;
-    [SerializeField] private float _knockBackForce = 5f;
+    [SerializeField] private float knockBackLength = .25f;
+    [SerializeField] private float knockBackForce = 5f;
     [SerializeField] private Transform groundPoint;
     [SerializeField] private LayerMask groundMask;
 
@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     private bool _isJump;
     private bool _canDoubleJump;
     private bool _onGround;
+    private bool _stopInput;
+    public bool StopInput { set => _stopInput = value; }
 
     void Start() {
         _rb = GetComponent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if (!pauseMenu.IsPaused) {
+        if (!pauseMenu.IsPaused && !_stopInput) {
             if (_knockBackCounter <= 0) {
                 _horizontalInput = Input.GetAxis("Horizontal");
 
@@ -57,8 +59,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void KnockBack() {
-        _knockBackCounter = _knockBackLength;
-        _rb.velocity = new Vector2(0f, _knockBackForce);
+        _knockBackCounter = knockBackLength;
+        _rb.velocity = new Vector2(0f, knockBackForce);
         _animator.SetTrigger("hurt");
     }
 
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (!pauseMenu.IsPaused) {
+        if (!pauseMenu.IsPaused && !_stopInput) {
             if (_knockBackCounter <= 0) {
                 _rb.velocity = new Vector2(speedX * SpeedXMultiplier * _horizontalInput * Time.fixedDeltaTime,
                     _rb.velocity.y);
@@ -86,8 +88,8 @@ public class PlayerController : MonoBehaviour {
                     Jump();
                 }
             } else {
-                if (_spriteRenderer.flipX) _rb.velocity = new Vector2(_knockBackForce, _rb.velocity.y);
-                else _rb.velocity = new Vector2(-_knockBackForce, _rb.velocity.y);
+                if (_spriteRenderer.flipX) _rb.velocity = new Vector2(knockBackForce, _rb.velocity.y);
+                else _rb.velocity = new Vector2(-knockBackForce, _rb.velocity.y);
             }
         }
     }

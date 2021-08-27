@@ -11,13 +11,15 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private float maxHeight;
 
     private Vector2 _lastPos;
+    private bool _stopFollow;
+    public bool StopFollow { set => _stopFollow = value; }
 
     private void Start() {
         _lastPos = transform.position;
     }
 
     void Update() {
-        if (target != null) {
+        if (target != null && !_stopFollow) {
             transform.position = new Vector3(
                 target.position.x,
                 Mathf.Clamp(target.position.y, minHeight, maxHeight),
