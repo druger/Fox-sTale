@@ -9,4 +9,14 @@ public class MapPoint : MonoBehaviour {
     [SerializeField] private MapPoint right;
     
     [SerializeField] private bool isLevel;
+
+    public MapPoint Up => up;
+
+    public MapPoint Down => down;
+
+    public MapPoint Left => left;
+
+    public MapPoint Right => right;
+
+    public bool IsLevel => isLevel;
 }
