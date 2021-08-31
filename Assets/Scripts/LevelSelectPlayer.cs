@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelSelectPlayer : MonoBehaviour {
+    [SerializeField] private LSManager lsManager;
     [SerializeField] private MapPoint currentPoint;
     [SerializeField] private float moveSpeed = 10f;
+
+    private bool _levelLoading;
     
     void Update() {
         var oldPosition = transform.position;
         transform.position = Vector3.MoveTowards(oldPosition, currentPoint.transform.position, moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, currentPoint.transform.position) < .1f) {
+        if (Vector3.Distance(transform.position, currentPoint.transform.position) < .1f && !_levelLoading) {
             MoveToRight();
             MoveToLeft();
             MoveToUp();
             MoveToDown();
+            SelectLevel();
+        }
+    }
+
+    private void SelectLevel() {
+        if (currentPoint.IsLevel && Input.GetButtonDown("Jump")) {
+            _levelLoading = true;
+            lsManager.LoadLevel(currentPoint.LevelToLoad);
         }
     }
 

@@ -9,6 +9,7 @@ public class MapPoint : MonoBehaviour {
     [SerializeField] private MapPoint right;
     
     [SerializeField] private bool isLevel;
+    [SerializeField] private int levelToLoad;
 
     public MapPoint Up => up;
 
@@ -19,4 +20,5 @@ public class MapPoint : MonoBehaviour {
     public MapPoint Right => right;
 
     public bool IsLevel => isLevel;
+    public int LevelToLoad => levelToLoad;
 }
