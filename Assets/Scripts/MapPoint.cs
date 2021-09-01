@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,20 @@ public class MapPoint : MonoBehaviour {
     [SerializeField] private MapPoint right;
     
     [SerializeField] private bool isLevel;
-    [SerializeField] private int levelToLoad;
+    [SerializeField] private bool isLocked;
+    [SerializeField] private String levelToLoad;
+    [SerializeField] private String levelToCheck;
+
+    private void Start() {
+        if (isLevel && levelToLoad != null && levelToCheck != null) {
+            isLocked = true;
+            if (PlayerPrefs.GetInt(levelToCheck + "_unlocked") == 1) {
+                isLocked = false;
+            }
+        }
+
+        if (levelToLoad == levelToCheck) isLocked = false;
+    }
 
     public MapPoint Up => up;
 
@@ -20,5 +34,8 @@ public class MapPoint : MonoBehaviour {
     public MapPoint Right => right;
 
     public bool IsLevel => isLevel;
-    public int LevelToLoad => levelToLoad;
+    
+    public bool IsLocked => isLocked;
+
+    public String LevelToLoad => levelToLoad;
 }

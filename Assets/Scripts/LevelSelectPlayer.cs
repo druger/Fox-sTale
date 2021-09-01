@@ -22,10 +22,22 @@ public class LevelSelectPlayer : MonoBehaviour {
     }
 
     private void SelectLevel() {
-        if (currentPoint.IsLevel && Input.GetButtonDown("Jump")) {
+        if (IsLevel() && IsLevelExists() && IsLevelNotLocked() && Input.GetButtonDown("Jump")) {
             _levelLoading = true;
             lsManager.LoadLevel(currentPoint.LevelToLoad);
         }
+    }
+
+    private bool IsLevelNotLocked() {
+        return !currentPoint.IsLocked;
+    }
+
+    private bool IsLevelExists() {
+        return currentPoint.LevelToLoad != null;
+    }
+
+    private bool IsLevel() {
+        return currentPoint.IsLevel;
     }
 
     private void MoveToRight() {

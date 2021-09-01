@@ -45,15 +45,13 @@ public class LevelManager : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
         uiController.FadeToBlack();
         yield return new WaitForSeconds(1f / (uiController.FadeSpeed + .25f));
-        NextLevel();
+        OpenLevelSelect();
     }
 
-    private static void NextLevel() {
+    private void OpenLevelSelect() {
         var scene = SceneManager.GetActiveScene();
-        var currentLevel = scene.buildIndex;
-        if (SceneManager.sceneCount - 1 < currentLevel) {
-            SceneManager.LoadScene(++currentLevel);
-        }
+        PlayerPrefs.SetInt(scene.name + "_unlocked", 1);
+        SceneManager.LoadScene(1);
     }
 
     private IEnumerator Respawn() {

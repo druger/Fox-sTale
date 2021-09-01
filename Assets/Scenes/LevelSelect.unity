@@ -7193,8 +7193,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 3
+      value: Level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
@@ -7397,7 +7405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8509,8 +8517,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 5
+      value: Level5
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level4
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
@@ -8692,8 +8708,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 7
+      value: Level7
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level6
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
@@ -8781,8 +8805,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 6
+      value: Level6
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level5
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
@@ -9620,8 +9652,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 2
+      value: Level2
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
@@ -9709,8 +9749,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 4
+      value: Level4
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level3
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
@@ -10022,8 +10070,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 8
+      value: Level8
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level7
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
@@ -10396,7 +10452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: levelToLoad
-      value: 1
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271930949346603223, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
+      propertyPath: levelToCheck
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 6226639551026863768, guid: f2f31f17e75a74fef89fc9788ab0b7ea, type: 3}
       propertyPath: m_Name
