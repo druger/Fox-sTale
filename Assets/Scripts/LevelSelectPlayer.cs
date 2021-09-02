@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelSelectPlayer : MonoBehaviour {
     [SerializeField] private LSManager lsManager;
     [SerializeField] private MapPoint currentPoint;
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private float moveSpeed = 10f;
 
     private bool _levelLoading;
@@ -76,5 +77,6 @@ public class LevelSelectPlayer : MonoBehaviour {
 
     private void SetNextPoint(MapPoint next) {
         currentPoint = next;
+        audioManager.PlaySFX(5);
     }
 }
