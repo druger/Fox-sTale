@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour {
     private void OpenLevelSelect() {
         var scene = SceneManager.GetActiveScene();
         PlayerPrefs.SetInt(scene.name + "_unlocked", 1);
+        PlayerPrefs.SetString("CurrentLevel", scene.name);
         SceneManager.LoadScene(1);
     }
 

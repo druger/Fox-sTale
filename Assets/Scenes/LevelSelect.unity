@@ -8674,6 +8674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiController: {fileID: 1814397854}
+  player: {fileID: 659730186}
 --- !u!4 &1033577368
 Transform:
   m_ObjectHideFlags: 0

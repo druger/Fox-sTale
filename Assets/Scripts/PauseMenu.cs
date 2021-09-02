@@ -19,6 +19,9 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void LevelSelect() {
+        PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
+        SetTimeScale(1);
     }
 
     public void MainMenu() {

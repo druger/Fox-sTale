@@ -9,6 +9,8 @@ public class LevelSelectPlayer : MonoBehaviour {
 
     private bool _levelLoading;
     
+    public MapPoint CurrentPoint { set => currentPoint = value; }
+
     void Update() {
         var oldPosition = transform.position;
         transform.position = Vector3.MoveTowards(oldPosition, currentPoint.transform.position, moveSpeed * Time.deltaTime);

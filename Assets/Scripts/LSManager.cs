@@ -6,6 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class LSManager : MonoBehaviour {
     [SerializeField] private LSUIController uiController;
+    [SerializeField] private LevelSelectPlayer player;
+
+    private MapPoint[] _mapPoints;
+
+    private void Start() {
+        _mapPoints = FindObjectsOfType<MapPoint>();
+        CheckCurrentLevel();
+    }
+
+    private void CheckCurrentLevel() {
+        if (PlayerPrefs.HasKey("CurrentLevel")) {
+            foreach (var point in _mapPoints) {
+                if (point.LevelToLoad == PlayerPrefs.GetString("CurrentLevel")) {
+                    player.transform.position = point.transform.position;
+                    player.CurrentPoint = point;
+                }
+            }
+        }
+    }
 
     public void LoadLevel(String level) {
         StartCoroutine(LoadLevelCoroutine(level));
