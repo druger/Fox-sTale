@@ -40,11 +40,12 @@ public class LevelManager : MonoBehaviour {
     }
 
     private IEnumerator EndLevelCoroutine() {
+        audioManager.PlayLevelEndMusic();
         _playerController.StopInput = true;
         cameraController.StopFollow = true;
         yield return new WaitForSeconds(1.5f);
         uiController.FadeToBlack();
-        yield return new WaitForSeconds(1f / (uiController.FadeSpeed + .25f));
+        yield return new WaitForSeconds(1f / (uiController.FadeSpeed + 3f));
         OpenLevelSelect();
     }
 

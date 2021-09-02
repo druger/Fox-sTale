@@ -15,4 +15,9 @@ public class AudioManager : MonoBehaviour {
         sound.pitch = Random.Range(.9f, 1.1f);
         sound.Play();
     }
+
+    public void PlayLevelEndMusic() {
+        bgMusic.Stop();
+        levelEndMusic.Play();
+    }
 }
