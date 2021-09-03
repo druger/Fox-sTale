@@ -241,15 +241,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
+  pauseMenu: {fileID: 0}
   speedX: 5
   jumpForce: 10
   bounceForce: 15
-  _knockBackLength: 0.25
-  _knockBackForce: 5
+  knockBackLength: 0.25
+  knockBackForce: 5
   groundPoint: {fileID: 1761103876200790447}
   groundMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!95 &1761103877829689387
 Animator:
   serializedVersion: 3

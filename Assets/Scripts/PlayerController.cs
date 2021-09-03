@@ -58,6 +58,18 @@ public class PlayerController : MonoBehaviour {
         SetupAnimations();
     }
 
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Platform")) {
+            transform.parent = other.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Platform")) {
+            transform.parent = null;
+        }
+    }
+
     public void KnockBack() {
         _knockBackCounter = knockBackLength;
         _rb.velocity = new Vector2(0f, knockBackForce);
