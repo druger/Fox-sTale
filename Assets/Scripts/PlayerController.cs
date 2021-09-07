@@ -110,4 +110,6 @@ public class PlayerController : MonoBehaviour {
         _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         audioManager.PlaySFX(10);
     }
+
+    public Rigidbody2D Rb { get => _rb; }
 }
