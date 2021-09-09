@@ -494,6 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 984385487}
   animator: {fileID: 984385488}
+  currentState: 0
   moveSpeed: 13
   leftPoint: {fileID: 1562007520}
   rightPoint: {fileID: 2007361190}
