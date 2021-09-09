@@ -30,6 +30,12 @@ public class BossTankController : MonoBehaviour {
     void Update() {
         switch (currentState) {
             case States.Shooting:
+                _shotCounter -= Time.deltaTime;
+                if (_shotCounter <= 0) {
+                    _shotCounter = timeBetweenShots;
+                    var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                    newBullet.transform.localScale = boss.localScale;
+                }
                 break;
             case States.Hurt:
                 if (_hurtCounter > 0) {
