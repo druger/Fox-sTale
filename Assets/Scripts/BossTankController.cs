@@ -12,6 +12,10 @@ public class BossTankController : MonoBehaviour {
     private bool _moveRight;
     [SerializeField] private Transform leftPoint;
     [SerializeField] private Transform rightPoint;
+    [SerializeField] private GameObject mine;
+    [SerializeField] private Transform minePoint;
+    [SerializeField] private float timeBetweenMines;
+    [SerializeField] private float mineCounter;
 
     [Header("Shooting")]
     [SerializeField] private GameObject bullet;
@@ -43,6 +47,8 @@ public class BossTankController : MonoBehaviour {
                     _hurtCounter -= Time.deltaTime;
 
                     if (_hurtCounter <= 0) currentState = States.Moving;
+
+                    mineCounter = 0f;
                 }
 
                 break;
@@ -62,13 +68,19 @@ public class BossTankController : MonoBehaviour {
                         EndMovement();
                     }
                 }
+
+                mineCounter -= Time.deltaTime;
+                if (mineCounter <= 0) {
+                    mineCounter = timeBetweenMines;
+                    Instantiate(mine, minePoint.position, minePoint.rotation);
+                }
                 break;
         }
     }
 
     private void EndMovement() {
         currentState = States.Shooting;
-        _shotCounter = timeBetweenShots;
+        _shotCounter = 0f;
         hitBox.SetActive(true);
         animator.SetTrigger("stopMoving");
     }
@@ -77,6 +89,16 @@ public class BossTankController : MonoBehaviour {
         currentState = States.Hurt;
         _hurtCounter = hurtTime;
         animator.SetTrigger("hit");
+        ExplodeAllMInes();
+    }
+
+    private void ExplodeAllMInes() {
+        var mines = FindObjectsOfType<TankMine>();
+        if (mines.Length > 0) {
+            foreach (var foundMine in mines) {
+                foundMine.Explode();
+            }
+        }
     }
 
     private enum States {

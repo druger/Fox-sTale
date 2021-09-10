@@ -829,11 +829,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1200733524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1200733524, guid: 163d86afd587d4e38907618c15b19cf9, type: 3}
-  m_PrefabInstance: {fileID: 5224146409122971485}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1213330196
 GameObject:
   m_ObjectHideFlags: 0
@@ -7565,6 +7560,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 73012990}
+    - target: {fileID: 2057484384, guid: 163d86afd587d4e38907618c15b19cf9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5224146408655702748, guid: 163d86afd587d4e38907618c15b19cf9, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -7613,10 +7612,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 5224146408655702751, guid: 163d86afd587d4e38907618c15b19cf9, type: 3}
-      propertyPath: hitBox
-      value: 
-      objectReference: {fileID: 1200733524}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163d86afd587d4e38907618c15b19cf9, type: 3}
 --- !u!1001 &5268619538494879878

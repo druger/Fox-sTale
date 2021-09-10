@@ -72,6 +72,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankController: {fileID: 5224146408655702751}
   playerController: {fileID: 0}
+--- !u!1 &2057484383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2057484384}
+  m_Layer: 0
+  m_Name: MinePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2057484384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057484383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.53, y: -1.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5224146408155953298}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5224146407300913656
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +223,7 @@ Transform:
   m_Children:
   - {fileID: 5224146407946909858}
   - {fileID: 1200733525}
+  - {fileID: 2057484384}
   m_Father: {fileID: 5224146408655702748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -318,7 +349,12 @@ MonoBehaviour:
   moveSpeed: 13
   leftPoint: {fileID: 5224146407731128509}
   rightPoint: {fileID: 5224146407300913659}
+  mine: {fileID: 6316336578412916870, guid: 96197fbbf27364817980ee7db27d1aa6, type: 3}
+  minePoint: {fileID: 2057484384}
+  timeBetweenMines: 1
+  mineCounter: 0
   bullet: {fileID: 441045590004796415, guid: 8274bf699e5e94805844382d2bc214ff, type: 3}
   firePoint: {fileID: 5224146407946909858}
   timeBetweenShots: 1.5
+  hitBox: {fileID: 1200733524}
   hurtTime: 1
