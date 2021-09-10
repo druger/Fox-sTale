@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 441045590004796412}
   - component: {fileID: 441045590004796411}
   - component: {fileID: 441045590004796408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TankBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,5 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9816f53afd2b412484dc19b639f1be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthController: {fileID: 0}
   speed: 5

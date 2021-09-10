@@ -28,6 +28,13 @@ public class BossTankController : MonoBehaviour {
     [SerializeField] private float hurtTime;
     private float _hurtCounter;
 
+    [Header("Health")]
+    [SerializeField] private int health = 5;
+    [SerializeField] private GameObject explosion;
+    [SerializeField] private float shotSpeedUp = 1.2f;
+    [SerializeField] private float mineSpeedUp = 1.2f;
+    private bool _isDefeated;
+
     void Start() {
         currentState = States.Shooting;
     }
@@ -46,9 +53,15 @@ public class BossTankController : MonoBehaviour {
                 if (_hurtCounter > 0) {
                     _hurtCounter -= Time.deltaTime;
 
-                    if (_hurtCounter <= 0) currentState = States.Moving;
-
-                    mineCounter = 0f;
+                    if (_hurtCounter <= 0) {
+                        currentState = States.Moving;
+                        mineCounter = 0f;
+                        if (_isDefeated) {
+                            boss.gameObject.SetActive(false);
+                            Instantiate(explosion, boss.transform.position, boss.transform.rotation);
+                            currentState = States.Defeated;
+                        }
+                    }
                 }
 
                 break;
@@ -90,6 +103,13 @@ public class BossTankController : MonoBehaviour {
         _hurtCounter = hurtTime;
         animator.SetTrigger("hit");
         ExplodeAllMInes();
+        health--;
+        if (health <= 0) {
+            _isDefeated = true;
+        } else {
+            timeBetweenShots /= shotSpeedUp;
+            timeBetweenMines /= mineSpeedUp;
+        }
     }
 
     private void ExplodeAllMInes() {
@@ -104,6 +124,7 @@ public class BossTankController : MonoBehaviour {
     private enum States {
         Shooting,
         Hurt,
-        Moving
+        Moving,
+        Defeated
     }
 }

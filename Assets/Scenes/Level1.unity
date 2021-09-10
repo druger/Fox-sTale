@@ -7612,6 +7612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5224146408655702751, guid: 163d86afd587d4e38907618c15b19cf9, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 6297761834866606306, guid: 2b39186cd45a9446dadbd8df8227a8d3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163d86afd587d4e38907618c15b19cf9, type: 3}
 --- !u!1001 &5268619538494879878
