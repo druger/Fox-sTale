@@ -18,8 +18,9 @@ public class BossTankController : MonoBehaviour {
     [SerializeField] private Transform firePoint;
     [SerializeField] private float timeBetweenShots;
     private float _shotCounter;
-    
-    [Header("Hurt")]
+
+    [Header("Hurt")] 
+    [SerializeField] private GameObject hitBox;
     [SerializeField] private float hurtTime;
     private float _hurtCounter;
 
@@ -68,10 +69,11 @@ public class BossTankController : MonoBehaviour {
     private void EndMovement() {
         currentState = States.Shooting;
         _shotCounter = timeBetweenShots;
+        hitBox.SetActive(true);
         animator.SetTrigger("stopMoving");
     }
 
-    private void TakeHit() {
+    public void TakeHit() {
         currentState = States.Hurt;
         _hurtCounter = hurtTime;
         animator.SetTrigger("hit");
