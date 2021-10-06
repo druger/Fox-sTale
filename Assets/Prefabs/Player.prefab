@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 1761103877829689386}
   - component: {fileID: 1761103877829689387}
   - component: {fileID: 1025074117947868606}
+  - component: {fileID: 1024542518433704460}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9ed9ba9e0044a159f169ec7da1faa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
   audioManager: {fileID: 0}
   pauseMenu: {fileID: 0}
   speedX: 5
@@ -287,3 +289,41 @@ MonoBehaviour:
   uiController: {fileID: 0}
   deathEffect: {fileID: 6297761834866606306, guid: 2b39186cd45a9446dadbd8df8227a8d3, type: 3}
   maxHealth: 6
+--- !u!114 &1024542518433704460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761103877829689389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7af4d07dc63224435bc31704a17e2647, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b547c953-6dbd-4140-b9cf-0ec357663896
+    m_ActionName: PlayerControls/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 72628fbe-1d00-4efd-bfe0-02626d87fb44
+    m_ActionName: PlayerControls/Movement[/Keyboard/a,/Keyboard/d]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: PlayerControls
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

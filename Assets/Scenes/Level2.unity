@@ -521,6 +521,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 549612523757631604, guid: 13ca7f30879184ffc9581470d8acee73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -35.88
+      objectReference: {fileID: 0}
     - target: {fileID: 1058270098651573067, guid: 13ca7f30879184ffc9581470d8acee73, type: 3}
       propertyPath: m_Name
       value: LevelPack
@@ -568,6 +572,10 @@ PrefabInstance:
     - target: {fileID: 7216092005487077484, guid: 13ca7f30879184ffc9581470d8acee73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086260314989396852, guid: 13ca7f30879184ffc9581470d8acee73, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13ca7f30879184ffc9581470d8acee73, type: 3}

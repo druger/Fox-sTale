@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
     private const float SpeedXMultiplier = 50f;
@@ -35,19 +36,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         if (!pauseMenu.IsPaused && !_stopInput) {
             if (_knockBackCounter <= 0) {
-                _horizontalInput = Input.GetAxis("Horizontal");
-
                 _onGround = Physics2D.OverlapCircle(groundPoint.position, .2f, groundMask);
-
-                if (Input.GetButtonDown("Jump")) {
-                    if (_onGround) {
-                        _isJump = true;
-                        _canDoubleJump = true;
-                    } else if (_canDoubleJump) {
-                        _canDoubleJump = false;
-                        _isJump = true;
-                    }
-                }
 
                 Flip();
             } else {
@@ -111,5 +100,24 @@ public class PlayerController : MonoBehaviour {
         audioManager.PlaySFX(10);
     }
 
-    public Rigidbody2D Rb { get => _rb; }
+    public void OnMovement(InputAction.CallbackContext context) {
+        var input = context.ReadValue<Vector2>();
+        _horizontalInput = input.x;
+    }
+
+    public void OnJump(InputAction.CallbackContext context) {
+        if (context.started) {
+            if (_onGround) {
+                _isJump = true;
+                _canDoubleJump = true;
+            } else if (_canDoubleJump) {
+                _canDoubleJump = false;
+                _isJump = true;
+            }
+        }
+    }
+
+    public Rigidbody2D Rb {
+        get => _rb;
+    }
 }
