@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckpointController : MonoBehaviour {
     [SerializeField] private GameObject player;
-    
+
     private Checkpoint[] _checkpoints;
     private Vector3 _spawnPosition;
 

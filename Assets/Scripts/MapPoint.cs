@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapPoint : MonoBehaviour {
+    [SerializeField] private int id;
     [SerializeField] private MapPoint up;
     [SerializeField] private MapPoint down;
     [SerializeField] private MapPoint left;
     [SerializeField] private MapPoint right;
-    
+    [SerializeField] private MapPoint next;
+    [SerializeField] private MapPoint prev;
+
     [SerializeField] private bool isLevel;
     [SerializeField] private bool isLocked;
     [SerializeField] private String levelToLoad;
@@ -33,9 +36,15 @@ public class MapPoint : MonoBehaviour {
 
     public MapPoint Right => right;
 
+    public MapPoint Next => next;
+
+    public MapPoint Prev => prev;
+
     public bool IsLevel => isLevel;
-    
+
     public bool IsLocked => isLocked;
 
     public String LevelToLoad => levelToLoad;
+
+    public int ID => id;
 }

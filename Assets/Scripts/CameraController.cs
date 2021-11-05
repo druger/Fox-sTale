@@ -12,7 +12,10 @@ public class CameraController : MonoBehaviour {
 
     private Vector2 _lastPos;
     private bool _stopFollow;
-    public bool StopFollow { set => _stopFollow = value; }
+
+    public bool StopFollow {
+        set => _stopFollow = value;
+    }
 
     private void Start() {
         _lastPos = transform.position;

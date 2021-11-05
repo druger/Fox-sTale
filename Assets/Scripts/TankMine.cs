@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TankMine : MonoBehaviour {
     [SerializeField] private GameObject explosion;
-    
+
     private PlayerHealthController _playerHealthController;
 
     private void Start() {

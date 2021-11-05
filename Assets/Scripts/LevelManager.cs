@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour {
         // TODO reinstance player object instead
         player.SetActive(false);
         audioManager.PlaySFX(8);
-        
+
         yield return new WaitForSeconds(waitToRespawn - 1f / uiController.FadeSpeed);
         uiController.FadeToBlack();
         yield return new WaitForSeconds(1f / uiController.FadeSpeed + .2f);

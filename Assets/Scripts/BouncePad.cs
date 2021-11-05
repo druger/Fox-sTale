@@ -8,7 +8,7 @@ public class BouncePad : MonoBehaviour {
     [SerializeField] private float bounceForce = 25f;
 
     private Animator _animator;
-    
+
     void Start() {
         _animator = GetComponent<Animator>();
     }

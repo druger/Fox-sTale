@@ -7,8 +7,7 @@ public class BossTankController : MonoBehaviour {
     [SerializeField] private Animator animator;
     [SerializeField] private States currentState;
 
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed;
+    [Header("Movement")] [SerializeField] private float moveSpeed;
     private bool _moveRight;
     [SerializeField] private Transform leftPoint;
     [SerializeField] private Transform rightPoint;
@@ -17,19 +16,16 @@ public class BossTankController : MonoBehaviour {
     [SerializeField] private float timeBetweenMines;
     [SerializeField] private float mineCounter;
 
-    [Header("Shooting")]
-    [SerializeField] private GameObject bullet;
+    [Header("Shooting")] [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float timeBetweenShots;
     private float _shotCounter;
 
-    [Header("Hurt")] 
-    [SerializeField] private GameObject hitBox;
+    [Header("Hurt")] [SerializeField] private GameObject hitBox;
     [SerializeField] private float hurtTime;
     private float _hurtCounter;
 
-    [Header("Health")]
-    [SerializeField] private int health = 5;
+    [Header("Health")] [SerializeField] private int health = 5;
     [SerializeField] private GameObject explosion;
     [SerializeField] private float shotSpeedUp = 1.2f;
     [SerializeField] private float mineSpeedUp = 1.2f;
@@ -48,6 +44,7 @@ public class BossTankController : MonoBehaviour {
                     var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
                     newBullet.transform.localScale = boss.localScale;
                 }
+
                 break;
             case States.Hurt:
                 if (_hurtCounter > 0) {
@@ -87,6 +84,7 @@ public class BossTankController : MonoBehaviour {
                     mineCounter = timeBetweenMines;
                     Instantiate(mine, minePoint.position, minePoint.rotation);
                 }
+
                 break;
         }
     }

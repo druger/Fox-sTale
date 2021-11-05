@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,13 +8,20 @@ public class LevelSelectPlayer : MonoBehaviour {
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private float moveSpeed = 10f;
 
+    private MapPoint _selectedPoint;
     private bool _levelLoading;
+    private bool _isSelectPoint;
 
     public MapPoint CurrentPoint {
         set => currentPoint = value;
     }
 
     void Update() {
+        if (_isSelectPoint) MovePlayer();
+        ChangePosition();
+    }
+
+    private void ChangePosition() {
         var oldPosition = transform.position;
         transform.position = Vector3.MoveTowards(
             oldPosition,
@@ -58,12 +63,35 @@ public class LevelSelectPlayer : MonoBehaviour {
         return Vector3.Distance(transform.position, currentPoint.transform.position) < .1f && !_levelLoading;
     }
 
-    public void OnJump(InputAction.CallbackContext context) {
+    public void OnPlay(InputAction.CallbackContext context) {
         if (CanMove() && IsLevel() && IsLevelExists() && IsLevelNotLocked()) {
             _levelLoading = true;
             lsManager.LoadLevel(currentPoint.LevelToLoad);
         }
     }
+
+    public void OnTouch(InputAction.CallbackContext context) {
+    }
+
+    public void OnMouseClick(InputAction.CallbackContext context) {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        if (hit) {
+            _selectedPoint = hit.transform.gameObject.GetComponent<MapPoint>();
+            _isSelectPoint = true;
+        }
+    }
+
+    private void MovePlayer() {
+        Debug.Log("start moving");
+        if (_selectedPoint == currentPoint) {
+            _isSelectPoint = false;
+            Debug.Log("end moving");
+            return;
+        }
+        if (CanMove()) SetNextPoint(_selectedPoint.ID > currentPoint.ID ? currentPoint.Next : currentPoint.Prev);
+    }
+
 
     private void MoveToRight() {
         if (currentPoint.Right != null) {

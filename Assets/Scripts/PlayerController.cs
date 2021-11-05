@@ -25,7 +25,10 @@ public class PlayerController : MonoBehaviour {
     private bool _canDoubleJump;
     private bool _onGround;
     private bool _stopInput;
-    public bool StopInput { set => _stopInput = value; }
+
+    public bool StopInput {
+        set => _stopInput = value;
+    }
 
     void Start() {
         _rb = GetComponent<Rigidbody2D>();

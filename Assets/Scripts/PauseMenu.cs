@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour {
     private bool _isPaused;
 
     public bool IsPaused => _isPaused;
-    
+
     public void ResumeGame() {
         PauseUnpause();
     }
@@ -45,5 +45,4 @@ public class PauseMenu : MonoBehaviour {
     private void SetTimeScale(float time) {
         Time.timeScale = time;
     }
-    
 }

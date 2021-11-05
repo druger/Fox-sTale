@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BossBullet : MonoBehaviour {
     [SerializeField] private float speed;
-    
+
     private PlayerHealthController _playerHealthController;
 
     private void Start() {
@@ -20,6 +20,7 @@ public class BossBullet : MonoBehaviour {
         if (other.CompareTag("Player")) {
             _playerHealthController.DealDamage();
         }
+
         Destroy(gameObject);
     }
 }

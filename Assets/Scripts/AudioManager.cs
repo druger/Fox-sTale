@@ -4,7 +4,6 @@ using UnityEngine;
 
 // TODO вынести использование аудио по соответствующим скриптам
 public class AudioManager : MonoBehaviour {
-
     [SerializeField] private AudioSource[] soundEffects;
     [SerializeField] private AudioSource bgMusic;
     [SerializeField] private AudioSource levelEndMusic;

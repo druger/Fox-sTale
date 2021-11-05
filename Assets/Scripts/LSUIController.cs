@@ -10,7 +10,7 @@ public class LSUIController : MonoBehaviour {
 
     private bool _shouldFadeToBlack;
     private bool _shouldFadeFromBlack;
-    
+
     public float FadeSpeed => fadeSpeed;
 
     private void Start() {
@@ -40,7 +40,7 @@ public class LSUIController : MonoBehaviour {
             }
         }
     }
-    
+
     public void FadeToBlack() {
         _shouldFadeToBlack = true;
         _shouldFadeFromBlack = false;
