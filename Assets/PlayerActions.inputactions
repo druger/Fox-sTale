@@ -178,14 +178,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Touch",
-                    "type": "PassThrough",
-                    "id": "d2a64041-8735-4d05-b9ca-e63ef188ce08",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "MouseClick",
                     "type": "Button",
                     "id": "9814b614-76b2-45eb-9a66-809d5bfa5944",
@@ -211,17 +203,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Play",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ed73d67a-b8d7-4b22-901e-bb66e742db26",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mobile",
-                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TouchPhase = UnityEngine.TouchPhase;
 
 public class LevelSelectPlayer : MonoBehaviour {
     [SerializeField] private LSManager lsManager;
@@ -19,6 +20,7 @@ public class LevelSelectPlayer : MonoBehaviour {
     void Update() {
         if (_isSelectPoint) MovePlayer();
         ChangePosition();
+        OnTouch();
     }
 
     private void ChangePosition() {
@@ -70,12 +72,19 @@ public class LevelSelectPlayer : MonoBehaviour {
         }
     }
 
-    public void OnTouch(InputAction.CallbackContext context) {
+    private void OnTouch() {
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) {
+            SetSelectedPoint(Input.touches[0].position);
+        }
     }
 
     public void OnMouseClick(InputAction.CallbackContext context) {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        SetSelectedPoint(Mouse.current.position.ReadValue());
+    }
+
+    private void SetSelectedPoint(Vector3 position) {
+        Vector2 origin = Camera.main.ScreenToWorldPoint(position);
+        var hit = Physics2D.Raycast(origin, Vector2.zero);
         if (hit) {
             _selectedPoint = hit.transform.gameObject.GetComponent<MapPoint>();
             _isSelectPoint = true;
