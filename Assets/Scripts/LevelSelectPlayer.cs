@@ -20,7 +20,10 @@ public class LevelSelectPlayer : MonoBehaviour {
     void Update() {
         if (_isSelectPoint) MovePlayer();
         ChangePosition();
+        OnMovement();
         OnTouch();
+        OnMouseClick();
+        OnPlayClick();
     }
 
     private void ChangePosition() {
@@ -44,18 +47,15 @@ public class LevelSelectPlayer : MonoBehaviour {
         return currentPoint.IsLevel;
     }
 
-    public void OnMovement(InputAction.CallbackContext context) {
-        var input = context.ReadValue<Vector2>();
-        var inputX = input.x;
-        var inputY = input.y;
+    public void OnMovement() {
         if (CanMove()) {
-            if (inputX > .5f) {
+            if (Input.GetAxisRaw("Horizontal")  > .5f) {
                 MoveToRight();
-            } else if (inputX < -.5f) {
+            } else if (Input.GetAxisRaw("Horizontal")  < -.5f) {
                 MoveToLeft();
-            } else if (inputY > .5f) {
+            } else if (Input.GetAxisRaw("Vertical") > .5f) {
                 MoveToUp();
-            } else if (inputY < -.5f) {
+            } else if (Input.GetAxisRaw("Vertical") < -.5f) {
                 MoveToDown();
             }
         }
@@ -65,8 +65,8 @@ public class LevelSelectPlayer : MonoBehaviour {
         return Vector3.Distance(transform.position, currentPoint.transform.position) < .1f && !_levelLoading;
     }
 
-    public void OnPlay(InputAction.CallbackContext context) {
-        if (CanMove() && IsLevel() && IsLevelExists() && IsLevelNotLocked()) {
+    private void OnPlayClick() {
+        if (CanMove() && IsLevel() && IsLevelExists() && IsLevelNotLocked() && Input.GetKeyDown(KeyCode.Space)) {
             _levelLoading = true;
             lsManager.LoadLevel(currentPoint.LevelToLoad);
         }
@@ -78,8 +78,10 @@ public class LevelSelectPlayer : MonoBehaviour {
         }
     }
 
-    public void OnMouseClick(InputAction.CallbackContext context) {
-        SetSelectedPoint(Mouse.current.position.ReadValue());
+    public void OnMouseClick() {
+        if (Input.GetMouseButtonDown(0)) {
+            SetSelectedPoint(Mouse.current.position.ReadValue());
+        }
     }
 
     private void SetSelectedPoint(Vector3 position) {
